@@ -10,12 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
-/**
- * Android���������
- * Created by joshua on 2018-04-16.
- */
+
 @Controller
-@RequestMapping(path = "/stockOut")
+@RequestMapping(path = "api/stockOut")
 public class StockOutController {
 
     @Autowired
@@ -24,7 +21,7 @@ public class StockOutController {
     @Autowired
     public UserInfoRepository userInfoRepository;
 
-    @GetMapping("/stockOut")
+    @PostMapping("/stockOut")
     public @ResponseBody String stockOut(@RequestParam String orderNumber,@RequestParam Integer userId,@RequestParam String to){
         OrderList orderList = orderListRepository.findByOrderNumber(orderNumber).get(0);
         UserInfo userInfo = userInfoRepository.findById(userId);

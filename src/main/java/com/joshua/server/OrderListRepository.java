@@ -27,7 +27,7 @@ public interface OrderListRepository extends CrudRepository<OrderList,Long> {
     @Query("select o from OrderList o where o.isStock =1 order by o.id desc")
     List<OrderList> getStockIn();
 
-    @Query("select o from OrderList o where o.isStock =2 and o.comments  not like '%打错作废%' order by o.stockOutDate desc")
+    @Query("select o from OrderList o where o.isStock =2 order by o.stockOutDate desc")
     List<OrderList> getStockOut();
 
     @Modifying

@@ -9,13 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
-/**
- * Created by joshua on 2018-04-18.
- * 用户类型增删改控制器
- */
+
 
 @Controller
-@RequestMapping(path = "/staffType")
+@RequestMapping(path = "api/staffType")
 public class StaffTypeController {
 
     private static Logger logger = LoggerFactory.getLogger(StaffTypeController.class);

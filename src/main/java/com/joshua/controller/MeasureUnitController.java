@@ -10,13 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
-/**
- * 产品单位增删改控制器
- * Created by joshua on 2018-04-18.
- */
 
 @Controller
-@RequestMapping(path = "/measureUnit")
+@RequestMapping(path = "api/measureUnit")
 public class MeasureUnitController {
 
     private static Logger logger = LoggerFactory.getLogger(MeasureUnitController.class);

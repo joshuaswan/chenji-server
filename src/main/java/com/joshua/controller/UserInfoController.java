@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by joshua on 2018-04-18.
  */
 @Controller
-@RequestMapping(path = "/userInfo")
+@RequestMapping(path = "api/userInfo")
 public class UserInfoController {
 
     private static Logger logger = LoggerFactory.getLogger(UserInfoController.class);

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @Controller
-@RequestMapping(path = "/goodsName")
+@RequestMapping(path = "api/goodsName")
 public class GoodsNameController {
 
     private static Logger logger = LoggerFactory.getLogger(GoodsNameController.class);

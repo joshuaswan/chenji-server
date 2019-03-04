@@ -16,7 +16,7 @@ import java.util.List;
  * Created by joshua on 2018-04-16.
  */
 @Controller
-@RequestMapping(path = "/stockIn")
+@RequestMapping(path = "api/stockIn")
 public class StockInController {
 
     @Autowired
@@ -27,40 +27,39 @@ public class StockInController {
 
     @PostMapping(path = "/save")
     public @ResponseBody
-    String saveOrder(@RequestParam String orderList){
+    String saveOrder(@RequestBody OrderList orderList) {
         System.out.println(orderList);
 
-        OrderList orderList1 = JSON.parseObject(orderList,OrderList.class);
-
-        System.out.println("============" + orderList1.toString());
-        if (orderList1.getOrderNumber() == null){
-            orderList1.saveOrder();
-            orderListRepository.save(orderList1);
-            Integer id = orderList1.getId();
+        System.out.println("============" + orderList.toString());
+        if (orderList.getOrderNumber() == null) {
+            orderList.stockIn();
+            orderListRepository.save(orderList);
+            Integer id = orderList.getId();
             String stringId = id.toString();
             while (stringId.length() < chenjiConfig.getOrderLength())
                 stringId = "0" + stringId;
             String orderNumber = chenjiConfig.getOrderPrefix() + stringId;
-            orderList1.setOrderNumber(orderNumber);
-            System.out.println(orderNumber+ "++++++++++++++++");
-            orderListRepository.save(orderList1);
-            return orderList1.getOrderNumber();
-        }else {
+            orderList.setOrderNumber(orderNumber);
+            System.out.println(orderNumber + "++++++++++++++++");
+            orderListRepository.save(orderList);
+            return orderList.getOrderNumber();
+        } else {
             return null;
         }
     }
 
     @PostMapping(path = "/stockIn")
     public @ResponseBody
-    String stockIn(@RequestParam String orderList){
-        OrderList orderList1 = JSON.parseObject(orderList,OrderList.class);
+    String stockIn(@RequestBody String orderList) {
+        OrderList orderList1 = JSON.parseObject(orderList, OrderList.class);
         orderList1.stockIn();
         orderListRepository.save(orderList1);
         return orderList1.getOrderNumber();
     }
 
     @GetMapping(path = "/unPrint")
-    public @ResponseBody List<OrderList> unPrint(){
+    public @ResponseBody
+    List<OrderList> unPrint() {
         return orderListRepository.unPrint();
     }
 }

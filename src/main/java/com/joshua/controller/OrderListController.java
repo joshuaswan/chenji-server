@@ -17,7 +17,7 @@ import java.util.Optional;
  * web端订单信息控制器
  */
 @Controller
-@RequestMapping(path = "orderList")
+@RequestMapping(path = "api/orderList")
 public class OrderListController {
 
     @Autowired
@@ -40,21 +40,21 @@ public class OrderListController {
         return null;
     }
 
-    @PostMapping(path = "addOrder")
-    public @ResponseBody
-    String addOrder(@RequestBody OrderList orderList) {
-        orderList.setCreateDate(new Date());
-        //存储后获取ID生成对应order Number
-        orderListRepository.save(orderList);
-        Integer id = orderList.getId();
-        String stringId = id.toString();
-        while (stringId.length() < chenjiConfig.getOrderLength())
-            stringId = "0" + stringId;
-        String orderNumber = chenjiConfig.getOrderPrefix() + stringId;
-        orderList.setOrderNumber(orderNumber);
-        orderListRepository.save(orderList);
-        return "OK";
-    }
+//    @PostMapping(path = "addOrder")
+//    public @ResponseBody
+//    String addOrder(@RequestBody OrderList orderList) {
+//        orderList.setCreateDate(new Date());
+//        //存储后获取ID生成对应order Number
+//        orderListRepository.save(orderList);
+//        Integer id = orderList.getId();
+//        String stringId = id.toString();
+//        while (stringId.length() < chenjiConfig.getOrderLength())
+//            stringId = "0" + stringId;
+//        String orderNumber = chenjiConfig.getOrderPrefix() + stringId;
+//        orderList.setOrderNumber(orderNumber);
+//        orderListRepository.save(orderList);
+//        return "OK";
+//    }
 
     @GetMapping(path = "getOrderList")
     public @ResponseBody

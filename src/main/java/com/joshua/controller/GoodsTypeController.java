@@ -8,12 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * 产品类型增删改控制器
- * Created by joshua on 2018-04-16.
- */
 @Controller
-@RequestMapping(path = "/goodsType")
+@RequestMapping(path = "api/goodsType")
 public class GoodsTypeController {
 
     private static Logger logger = LoggerFactory.getLogger(GoodsTypeController.class);
