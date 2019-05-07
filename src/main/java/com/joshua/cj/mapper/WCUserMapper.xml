@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.joshua.cj.mapper.WCUserMapper">
+    <insert id="insertWCUser" parameterType="com.joshua.cj.pojo.WCUser">
+    insert into wc_user(openid,nick_name,gender,language,city,province,country,avatarUrl,login_count)
+     values(#{openid},#{nickName},#{gender},#{language},#{city},#{province},#{country},#{avatarUrl},1)
+    </insert>
+    <select id="selectByOpenid" resultType="com.joshua.cj.pojo.WCUser" parameterType="String">
+        select id,openid,nick_name as nickName,gender,language ,city,province,country,avatar_url as avatarUrl,
+        login_count as loginCount,is_staff as isStaff,phone_number as phoneNumber,last_login as lastLogin ,
+        real_name as realName,staff_type as staffType from wc_user where openid=#{openid}
+    </select>
+    <update id="addLoginCount">
+        update wc_user set login_count=login_count+1,last_login=#{lastLogin} where openid= #{openid}
+    </update>
+</mapper>

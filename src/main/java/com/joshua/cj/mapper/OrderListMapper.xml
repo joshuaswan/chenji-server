@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.joshua.cj.mapper.OrderListMapper">
+    <select id="selectOrderListByOrderNumber" resultType="com.joshua.cj.pojo.OrderList" parameterType="String">
+        select id,order_number as orderNumber,goods_name as goodsName,goods_type as goodsType,quantity,measure_unit as measureUnit,
+        create_date as createDate,release_date as releaseDate,stock_out_date as stockOutDate,is_stock as isStock,
+        is_stock_out as isStockOut, stock_in_user_id as stockInUserId, stock_out_user_id as stockOutUserId,
+        sum_price as sumPrice, order_from as orderFrom,order_to as orderTo,comments from order_list
+        where order_number = #{orderNumber}
+    </select>
+</mapper>
